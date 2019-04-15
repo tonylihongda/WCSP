@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="login">
+    <text>当前密码:</text>
+    <input class="input" bindinput="printkey" password="true" maxlength="20" confirm-type="next"/>
+    <text>新密码:</text>
+    <input class="input" bindinput="printnewkey1" password="true" maxlength="20" confirm-type="next"/>
+    <text>确认新密码:</text>
+    <input class="input" bindinput="printnewkey2" password="true" maxlength="20" confirm-type="send"/>
+    <button bindtap="changethekey">确认更改</button>
+  </view>
+</view>

@@ -1,0 +1,3 @@
+<view class="container">
+<text wx:for="{{scoresheet}}" wx:key="_id">{{item.cName}}:{{item.grade}}</text>
+</view>

@@ -1,0 +1,14 @@
+<view class="container">
+  <text>欢迎光临,{{userName}}</text>
+  <image
+      class="image1"
+      mode="aspectFit"
+      src="{{imagePath}}"
+  ></image>
+  <button bindtap="changeImage">更换头像</button>
+  <button bindtap="infoManage">查看个人信息</button>
+  <button bindtap="scoreManage">查看成绩</button>
+  <button bindtap="examManage">考试管理</button>
+</view>
+<import src="../template/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>

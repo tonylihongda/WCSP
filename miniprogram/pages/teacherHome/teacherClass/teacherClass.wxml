@@ -1,0 +1,21 @@
+<view class="container">
+  <text>我的班级</text>
+  <button wx:if="{{type == 0}}" wx:for="{{classInfolist}}" wx:key="_id" bindtap="opentheclass" id="{{item._id}}">{{item.cName}} 课序号：{{item.cNum}}</button>
+
+
+  <checkbox-group bindchange="selectdelClass" wx:if="{{type ==1}}">
+    <label class="radio" wx:for="{{classInfolist}}" wx:key="_id">
+      <checkbox value="{{item._id}}"/>
+        <value>{{item.cName}} 课序号：{{item.cNum}}</value>
+        <text>\n</text>
+    </label>
+  </checkbox-group>
+
+
+</view>
+<button bindtap="addclass">新建班级</button>
+<button bindtap="deleteclass" wx:if="{{type == 0}}">删除班级</button>
+<button bindtap="deletesure" wx:if="{{type ==1}}">确认删除</button>
+<button bindtap="deletecancel" wx:if="{{type ==1}}">取消删除</button>
+<import src="/pages/template/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>

@@ -1,0 +1,8 @@
+<text>班级列表</text>
+<radio-group bindchange="selectClass">
+  <label class="radio" wx:for="{{items}}" wx:key="_id">
+    <checkbox value="{{item._id}}"/>
+    {{item.cName}} 课序号：{{item.cNum}} {{item.tName}}
+  </label>
+</radio-group>
+<button bindtap="jointheclass">加入</button>

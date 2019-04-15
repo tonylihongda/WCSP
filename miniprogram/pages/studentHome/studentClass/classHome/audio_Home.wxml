@@ -1,0 +1,29 @@
+<view class="content" scroll-y="true">
+  <view class="search-bar">
+    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+    <input placeholder="输入关键字查询" bindchange="inputChange"/>
+    <button type="primary" bindtap="queryAudios">查询</button>
+  </view>
+  <view class="header-bg"></view>
+  <view class="upload">
+    <button type="primary" bindtap="queryAllAudios">显示全部</button>
+  </view>
+  <view class="book-content">
+    <view wx:for="{{audioList}}" wx:key="_id" id="{{item._id}}" bindtap="goToListen">
+      <view class="book-list">
+        <view class="book-image">
+          <image src="cloud://wechat-bbcf1c.7765-wechat-bbcf1c/my-image.jpg" mode="aspectFit"></image>
+        </view>
+        <view class="book-info">
+          <view class="book-info-style">
+            <view>标题 : {{item.title}}</view>
+            <view>上传者 : {{item.author}}\n</view>
+            <view>关键词 : {{item.keys[0]}} {{item.keys[1]}} {{item.key[2]}} </view>
+            <view>添加时间 : {{item.add_date}}\n</view>
+          </view>
+        </view>
+      </view>
+      <view class="line"></view>
+    </view>
+  </view>
+</view>

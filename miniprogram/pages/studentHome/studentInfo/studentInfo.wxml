@@ -1,0 +1,10 @@
+<view class="container">
+  <text>姓名：{{sName}}</text>
+  <text>学号：{{sIDnum}}</text>
+  <text>性别：{{sSex}}</text>
+  <text>年级：{{sYear}}级</text>
+  <text>学院：{{school}}</text>
+  <text>专业：{{major}}</text>
+  <button bindtap="logoff">解除绑定</button>
+  <button bindtap="changekey">修改密码</button>
+</view>

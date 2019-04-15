@@ -1,0 +1,13 @@
+<view class="container">
+  <text>班级列表</text>
+  <radio-group bindchange="selectClass">
+    <label class="radio" wx:for="{{items}}" wx:key="_id">
+      <checkbox value="{{item._id}}">
+        <view class="centerinfo">
+            {{item.cName}} 课序号：{{item.cNum}}
+        </view>
+      </checkbox>
+    </label>
+  </radio-group>
+  <button bindtap="createclass">创建</button>
+</view>

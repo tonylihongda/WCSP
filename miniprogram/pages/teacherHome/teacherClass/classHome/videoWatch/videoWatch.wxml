@@ -1,0 +1,8 @@
+<view class="page-body">
+  <view class=page-section tc">
+    <video id="myVideo" src="{{video_path}}"></video>
+  </view>
+  <text>\n视频介绍：\n</text>
+  <text>{{video_intro}}</text>
+  <button type="download" bindtap="downloadFile">保存到本地</button>
+</view>

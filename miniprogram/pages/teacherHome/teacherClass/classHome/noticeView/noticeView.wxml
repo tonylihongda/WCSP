@@ -1,0 +1,5 @@
+<view class="container">
+<text>{{notice_title}}</text>
+</view>
+<view>\n\n</view>
+<view>{{notice_context}}</view>

@@ -1,0 +1,12 @@
+<view class="container">
+
+  <!-- 登录 -->
+  <view class="login">
+    <text>学号</text>
+    <input class="input" bindinput="printnum" type="number" maxlength="9" confirm-type="next"/>
+    <text>密码</text>
+    <input class="input" bindinput="printkey" password="true" maxlength="20" confirm-type="send"/>
+    <button bindtap="studentlogin">学生登录</button>
+    <button bindtap="teacherlogin">教师登录</button>
+  </view>
+</view>

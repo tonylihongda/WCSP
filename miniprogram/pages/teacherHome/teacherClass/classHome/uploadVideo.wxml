@@ -1,0 +1,23 @@
+<text class="page-section-title">上传视频</text>
+<view class="page-section">
+  <text>    标题:</text>
+  <view class="textarea-wrp">
+    <textarea bindinput="bindTextAreaBlur" auto-focus="true" style="height: 2em" />
+  </view>
+</view>
+
+<text>    关键词:</text>
+<input bindinput="input_key1" maxlength="10"></input>
+<input bindinput="input_key2" maxlength="10"></input>
+<input bindinput="input_key3" maxlength="10"></input>
+
+
+<view class="page-section">
+  <text>    简介:</text>
+  <view class="textarea-wrp">
+    <textarea bindinput="bindTextAreaBlur2" auto-focus="true" style="height: 5em" />
+  </view>
+</view>
+
+<button type="primary" bindtap="selectVideo" disabled="{{disable}}">选择视频</button>
+<button type="primary" bindtap="uploadVideo">确定上传</button>

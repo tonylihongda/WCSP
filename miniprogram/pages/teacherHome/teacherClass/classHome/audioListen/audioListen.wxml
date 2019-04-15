@@ -1,0 +1,13 @@
+<view class="container">
+  <text>{{audio_title}}</text>
+  <image
+      class="image1"
+      mode="aspectFit"
+      src="cloud://wechat-bbcf1c.7765-wechat-bbcf1c/my-image.jpg"
+  ></image>
+  <text>{{audio_name}}</text>
+</view>
+<view>\n\n</view>
+<view>{{audio_intro}}</view>
+<button type="primary" bindtap="downloadAudio">播放</button>
+<button type="download" bindtap="downloadFile">下载</button>

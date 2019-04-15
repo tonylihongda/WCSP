@@ -1,0 +1,3 @@
+<view class="container">
+<text wx:for="{{examsheet}}" wx:key="_id">{{item.cName}}:{{item.exam_time}}</text>
+</view>

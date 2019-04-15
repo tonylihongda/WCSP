@@ -1,0 +1,7 @@
+<view class="container">
+  <text>我的班级</text>
+  <button wx:for="{{classInfolist}}" wx:key="_id" bindtap="opentheclass" id="{{item._id}}">{{item.cName}} {{item.tName}} 课序号：{{item.cNum}}</button>
+</view>
+<button bindtap="joinclass">加入班级</button>
+<import src="/pages/template/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>

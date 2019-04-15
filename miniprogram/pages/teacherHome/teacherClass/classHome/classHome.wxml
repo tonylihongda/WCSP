@@ -1,0 +1,8 @@
+<view class="container">
+<text>{{class_name}}</text>
+<button bindtap="video_home">上传视频</button>
+<button bindtap="audio_home">音频上传</button>
+<button bindtap="notice_home">通知管理</button>
+<button bindtap="file_home">教学文件</button>
+<button bindtap="studentList">学生管理</button>
+</view>

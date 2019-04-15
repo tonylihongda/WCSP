@@ -1,0 +1,95 @@
+<view class='time_head'>
+    <view class='time_head_l'>
+        <picker bindchange="bindPickerChange" value="{{weekNum}}" range="{{array}}">
+          <view class="picker">
+            {{array[weekNum]}}
+            <text class='icon iconfont icon-sanjiao_xia'></text>
+          </view>
+        </picker>
+    </view>
+    <view class='time_head_r'>{{today}}</view>
+</view>
+<view class=" {{cardRightIn?'fadeInRight':''}} {{cardLeftIn?'fadeInLeft':''}}" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <view class="top">
+      <view class="top-text">
+        <view>日</view>
+        <view>期</view>
+      </view>
+      <view wx:for="{{week_day}}" wx:key="_id" wx:if="{{weekNum==index}}">
+        <view wx:for="{{item}}" wx:key="_id" class="top-text">
+          <view class='{{item.k}}'>
+            <view>{{item.week}}</view>
+            <view>{{item.month}}/{{item.day}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="height:921rpx;width:730rpx;display:flex;">
+      <view style="background-color:#fd6a97;color:#666666;">
+        <view wx:for="{{times}}" wx:key="_id" class="left {{item.class2}}">
+          {{item.name}}
+        </view>
+      </view>
+      <view>
+        <view class='kebiao'>
+          <view class='kebiao_bs'>上午
+            <text class='icon iconfont icon-combinedshapecopy2'></text>
+          </view>
+        </view>
+      </view>
+      <view wx:for="{{[1,2]}}" wx:key="_id">
+        <view style="width:750rpx; position: absolute;border-bottom:1rpx dashed #e9e8e8;margin-top:{{(index+1)*150+58}}rpx;box-sizing: border-box;">
+        </view>
+      </view>
+      <view>
+        <view class='kebiao kebiao2'>
+          <view class='kebiao_bs'>下午
+            <text class='icon iconfont icon-combinedshapecopy2'></text>
+          </view>
+        </view>
+      </view>
+      <view wx:for="{{[3,4]}}" wx:key="_id">
+        <view style="width:750rpx; position: absolute;border-bottom:1rpx dashed #e9e8e8;margin-top:{{(index+1)*150+414}}rpx;">
+        </view>
+      </view>
+      <view>
+        <view class='kebiao kebiao3'>
+          <view class='kebiao_bs'>晚课
+            <text class='icon iconfont icon-combinedshapecopy2'></text>
+          </view>
+        </view>
+      </view>
+      <view wx:for="{{[5]}}" wx:key="_id">
+        <view style="width:750rpx; position: absolute;border-bottom:1rpx dashed #e9e8e8;margin-top:{{(index+1)*150+770}}rpx;">
+        </view>
+      </view>
+      <!--课表-->
+      <view wx:for="{{week_kecheng}}" wx:key="_id">
+        <view wx:for="{{item}}" wx:key="_id" wx:if="{{index==weekNum}}">
+          <view wx:for="{{item.sw_kc}}" wx:key="_id" >
+            <view class="flex-item kcb-item {{item.bg}}" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.xqj)*94+10}}rpx;margin-top:{{(item.skjc-1)*150+60+150}}rpx;height:{{item.skcd*150-4}}rpx;">
+              <navigator url='lesson/detailed'>
+                <view class="smalltext">{{item.kcmc}}</view>
+              </navigator>
+            </view>
+          </view>
+          <view wx:for="{{item.xw_kc}}" wx:key="_id">
+            <view class="flex-item kcb-item {{item.bg}}" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.xqj)*94+10}}rpx;margin-top:{{(item.skjc-1)*150+417+150}}rpx;height:{{item.skcd*150-4}}rpx;">
+              <navigator url='lesson/detailed'>
+                <view class="smalltext">{{item.kcmc}}</view>
+              </navigator>
+            </view>
+          </view>
+          <view wx:for="{{item.ws_kc}}" wx:key="_id">
+            <view class="flex-item kcb-item {{item.bg}}" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.xqj)*94+10}}rpx;margin-top:{{(item.skjc-1)*150+774+150}}rpx;height:{{item.skcd*150-4}}rpx;">
+              <navigator url='lesson/detailed'>
+                <view class="smalltext">{{item.kcmc}}</view>
+              </navigator>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>
+<import src="/pages/template/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>

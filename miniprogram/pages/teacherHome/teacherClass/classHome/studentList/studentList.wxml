@@ -1,0 +1,11 @@
+<view class="container">
+  <text>学生名单</text>
+  <view wx:for="{{studentInfolist}}" wx:key="_id" id="{{item._id}}">
+  
+    <text>姓名： {{item.sName}} 学号：{{item.sIDnum}} {{item.state}} 成绩：{{item.grade}}</text>
+    <input wx:if="{{type ==1}}" bindinput="printgrade" type="number" maxlength="3" confirm-type="send"/>
+    <button wx:if="{{(item.grade==undefined)&&(type == 0)}}" type="primary" id="{{item.ssid}}" bindtap="addgrade">录入成绩</button>
+    <button wx:if="{{(item.grade!=undefined)&&(type == 0)}}"  type="primary" id="{{item.ssid}}" bindtap="addgrade">修改成绩</button>
+    <button wx:if="{{type == 1}}" type="primary" value="{{item.ssid}}" bindtap="addsure">确认</button>
+  </view>
+</view>
