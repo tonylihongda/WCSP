@@ -1,0 +1,37 @@
+<text>cNum</text>
+<input bindinput='cNum'/>
+<text>course_id</text>
+        <picker bindchange="course_id" value="{{cindex}}" range="{{cNames}}">
+          <view class="picker">
+            {{courses[cindex].cName}}
+          </view>
+        </picker>
+<text>position</text>
+<input bindinput='position'/>
+<text>teacher_id</text>
+        <picker bindchange="teacher_id" value="{{tindex}}" range="{{tNames}}">
+          <view class="picker">
+            {{teachers[tindex].tName}}
+          </view>
+        </picker>
+<text>time_slot</text>
+<text>段数:</text>
+<input bindinput='duanshu' type='number'/>
+<button bindtap='duanshuok'>下一步</button>
+
+<view wx:for="{{time_slot}}" wx:key="_id">
+  <text>startweek:</text>
+  <input bindinput='startweek' type='number' id='{{index}}'/>
+  <text>endweek:</text>
+  <input bindinput='endweek' type='number' id='{{index}}'/>
+  <text>节数:</text>
+  <input bindinput='jieshu' type='number' id='{{index}}'/>
+  <button bindtap='jieshuok'>下一步</button>
+  <view wx:for="{{item.time}}" wx:key="_id">
+      <text>num:</text>
+      <input bindinput='num' type='number' id='{{index}}'/>
+      <text>weekday:</text>
+      <input bindinput='weekday' type='number' id='{{index}}'/>
+  </view>
+</view>
+<button bindtap="ok">确定</button>

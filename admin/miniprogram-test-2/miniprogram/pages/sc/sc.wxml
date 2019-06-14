@@ -1,0 +1,13 @@
+<text>section_id</text>
+        <picker bindchange="section_id" value="{{seindex}}" range="{{seNames}}">
+          <view class="picker">
+            {{sections[seindex].cName}}
+          </view>
+        </picker>
+<text>student_id</text>
+        <picker bindchange="student_id" value="{{stindex}}" range="{{stNames}}">
+          <view class="picker">
+            {{students[stindex].sName}}
+          </view>
+        </picker>
+<button bindtap="ok">确定</button>

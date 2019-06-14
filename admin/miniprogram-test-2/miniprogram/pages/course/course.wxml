@@ -1,0 +1,5 @@
+<text>cName</text>
+<input bindinput='cName'/>
+<text>cTotal</text>
+<input bindinput='cTotal'/>
+<button bindtap="ok">确定</button>

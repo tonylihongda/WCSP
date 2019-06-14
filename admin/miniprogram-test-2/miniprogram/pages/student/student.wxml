@@ -1,0 +1,15 @@
+<text>major</text>
+<input bindinput='major' value='软件工程'/>
+<text>sIDkey</text>
+<input bindinput='sIDkey' value='144961'/>
+<text>sIDnum</text>
+<input bindinput='sIDnum' length='9' value='201592' auto-focus='true'/>
+<text>sName</text>
+<input bindinput='sName' value='二傻'/>
+<text>sSex</text>
+<input bindinput='sSex' value='男'/>
+<text>sYear</text>
+<input bindinput='sYear' value='2015'/>
+<text>school</text>
+<input bindinput='school' value='软件学院'/>
+<button bindtap="ok">确定</button>

@@ -1,0 +1,15 @@
+<text>tTitle</text>
+<input bindinput='tTitle' value='教授'/>
+<text>tIDkey</text>
+<input bindinput='tIDkey' value='144961'/>
+<text>tIDnum</text>
+<input bindinput='tIDnum' length='9' value='201592' auto-focus='true'/>
+<text>tName</text>
+<input bindinput='tName' value='都敏俊'/>
+<text>tSex</text>
+<input bindinput='tSex' value='男'/>
+<text>birthday</text>
+<input bindinput='birthday' value='1970/5/5'/>
+<text>school</text>
+<input bindinput='school' value='软件学院'/>
+<button bindtap="ok">确定</button>
