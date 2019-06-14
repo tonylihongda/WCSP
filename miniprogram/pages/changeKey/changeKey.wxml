@@ -1,11 +1,6 @@
-<view class="container">
-  <view class="login">
-    <text>当前密码:</text>
-    <input class="input" bindinput="printkey" password="true" maxlength="20" confirm-type="next"/>
-    <text>新密码:</text>
-    <input class="input" bindinput="printnewkey1" password="true" maxlength="20" confirm-type="next"/>
-    <text>确认新密码:</text>
-    <input class="input" bindinput="printnewkey2" password="true" maxlength="20" confirm-type="send"/>
-    <button bindtap="changethekey">确认更改</button>
-  </view>
-</view>
+
+    <input auto-focus="true" class="input" bindinput="printkey" password="true" maxlength="20" confirm-type="next" style="width:500rpx; background:white; height: 70rpx; position: fixed; top:300rpx; margin-left:125rpx;  border: 0px solid; outline: 0px; opacity:{{0.8}};"placeholder="当前密码" placeholder-style="color: black"/>
+    <input class="input" bindinput="printnewkey1" password="true" maxlength="20" confirm-type="next" style="width:500rpx; background:white; height: 70rpx; position: fixed; top:400rpx; margin-left:125rpx;  border: 0px solid; outline: 0px; opacity:{{0.8}};"placeholder="新密码" placeholder-style="color: black"/>
+    <input class="input" bindinput="printnewkey2" password="true" maxlength="20" confirm-type="send" style="width:500rpx; background:white; height: 70rpx; position: fixed; top:500rpx; margin-left:125rpx;  border: 0px solid; outline: 0px; opacity:{{0.8}};"placeholder="确认新密码" placeholder-style="color: black"/>
+    <button bindtap="changethekey" style="width:30%; background:#6495ED; color:white; margin-left:262.5rpx; height: 90rpx; position:fixed; top:600rpx;align-items:center;justify-content: center">确认更改</button>
+

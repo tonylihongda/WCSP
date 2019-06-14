@@ -14,10 +14,6 @@ exports.main = async (event, context) => {
   } catch (e) {
     console.error(e)
   }
-
-
-
-
   try {
     for (let m = 0; m < course_list.data.length; m++) {
       courseInfo_list.push(await db.collection('Sections').doc(course_list.data[m]._id).get())
@@ -41,19 +37,21 @@ exports.main = async (event, context) => {
                 "skjc": courseInfo_list[m].data.time_slot[nn].time[o].num,
                 "skcd": 1,
                 "kcmc": courseInfo_list[m].data.cName,
-                "bg": 'shangwuke'
+                "bg": 'shangwuke',
+                "pos": courseInfo_list[m].data.position
               }
               jilu.push('38')
               yizhou_list.sw_kc.push(temp)
             }
-            else if (courseInfo_list[m].data.time_slot[nn].time[o].num == 2 || courseInfo_list[nn].data.time_slot[m].time[o].num == 3) {
+            else if (courseInfo_list[m].data.time_slot[nn].time[o].num == 2 || courseInfo_list[m].data.time_slot[nn].time[o].num == 3) {
               jilu.push('40')
               var temp = {
                 "xqj": courseInfo_list[m].data.time_slot[nn].time[o].weekday,
                 "skjc": courseInfo_list[m].data.time_slot[nn].time[o].num - 2,
                 "skcd": 1,
                 "kcmc": courseInfo_list[m].data.cName,
-                "bg": 'xiawuke'
+                "bg": 'xiawuke',
+                "pos": courseInfo_list[m].data.position
               }
               jilu.push('38')
               yizhou_list.xw_kc.push(temp)
@@ -65,7 +63,8 @@ exports.main = async (event, context) => {
                 "skjc": courseInfo_list[m].data.time_slot[nn].time[o].num - 4,
                 "skcd": 1,
                 "kcmc": courseInfo_list[m].data.cName,
-                "bg": 'wanke'
+                "bg": 'wanke',
+                "pos": courseInfo_list[m].data.position
               }
               jilu.push('62')
               yizhou_list.ws_kc.push(temp)
@@ -81,6 +80,7 @@ exports.main = async (event, context) => {
     console.error(e)
   }
   return {
+    course_list: course_list ,
     week_kecheng: week_kecheng,
     courseInfo_list,
     course_list,

@@ -1,12 +1,12 @@
+
 App({
-
-  data:{
-    accountInfo: {},
-  },
-
   onLaunch: function () {
     if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+      wx.showToast({
+        title: '请使用 2.2.3 或以上的基础库以使用云能力',
+        image: '/images/error.png',
+        duration: 1500
+      })
     } else {
       wx.cloud.init({
         traceUser: true,
@@ -15,7 +15,6 @@ App({
     var that = this
     that.init()
   },
-
   init: function(){
     var that = this
     const db = wx.cloud.database()
@@ -23,53 +22,40 @@ App({
       name: 'login',
       data: {},
       success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        that.globalData.openid = res.result.openid,
-          this.data.accountInfo = db.collection('Account').where({
+        that.globalData.openid = res.result.openid
+        db.collection('Account').where({
           _openid: that.globalData.openid
-          })
-        this.data.accountInfo.get({
+        }).get({
           success(res) {
-            console.log(res)
-            var user_id = res.data[0].user_id
-            var user_type = res.data[0].type
-            that.globalData.user_type = res.data[0].type
-            console.log(user_type)
-            if (user_type == 0) {
-              db.collection('Students').doc(user_id).get({
-                success(res) {
-                  console.log(res)
-                  that.globalData.idInfo = res.data
-                  that.globalData.imagePath = 'cloud://wechat-bbcf1c.7765-wechat-bbcf1c/' + that.globalData.idInfo._id + '/my-image.jpg',
-                    console.log(that.globalData.idInfo)
-                  wx.redirectTo({
-                    url: '../studentHome/studentHome'
-                  })
-                }
-              })
-            }
-            else if (user_type == 1) {
-              db.collection('Teachers').doc(user_id).get({
-                success(res) {
-                  that.globalData.idInfo = res.data
-                  that.globalData.imagePath = 'cloud://wechat-bbcf1c.7765-wechat-bbcf1c/' + that.globalData.idInfo._id + '/my-image.jpg',
-                    console.log(that.globalData.idInfo)
-                  wx.redirectTo({
-                    url: '../teacherHome/teacherHome'
-                  })
-                }
-              })
-            }
-          }
-        })
-        this.data.accountInfo.count({
-          success(res) {
-            var checkID = res.total
-            if (checkID == 0) {
+            if(res.data.length == 0){
               wx.redirectTo({
-                url: '../firstTime/firstTime'
+                url: '/pages/firstTime/firstTime'
               })
-            }
+            }else{
+              var user_id = res.data[0].user_id
+              var user_type = res.data[0].type
+              that.globalData.user_type = res.data[0].type
+              if (user_type == 0) {
+                db.collection('Students').doc(user_id).get({
+                  success(res) {
+                    that.globalData.idInfo = res.data
+                    wx.redirectTo({
+                      url: '../studentHome/studentHome'
+                    })
+                  }
+                })
+              }
+              else if (user_type == 1) {
+                db.collection('Teachers').doc(user_id).get({
+                  success(res) {
+                    that.globalData.idInfo = res.data
+                    wx.redirectTo({
+                      url: '../teacherHome/teacherHome'
+                    })
+                  }
+                })
+              }
+            }   
           }
         })
       },
@@ -117,8 +103,6 @@ App({
       tabBar: tabBar
     });
   },
-
-
   globalData: {
     userInfo: null,
     pop: 2,
@@ -134,8 +118,8 @@ App({
         {
           "pagePath": "/pages/studentHome/studentHome",
           "text": "首页",
-          "iconPath": "/images/console-entrance.png",
-          "selectedIconPath": "/images/console-entrance.png",
+          "iconPath": "/images/info.png",
+          "selectedIconPath": "/images/info_act.png",
           "clas": "menu-item",
           "selectedColor": "#4665f9",
           active: true
@@ -143,8 +127,8 @@ App({
         {
           "pagePath": "/pages/studentHome/studentTimetable/studentTimetable",
           "text": "课程",
-          "iconPath": "/images/console-entrance.png",
-          "selectedIconPath": "/images/console-entrance.png",
+          "iconPath": "/images/timetable.png",
+          "selectedIconPath": "/images/timetable_act.png",
           "selectedColor": "#4665f9",
           "clas": "menu-item",
           active: false
@@ -152,8 +136,8 @@ App({
         {
           "pagePath": "/pages/studentHome/studentClass/studentClass",
           "text": "班级",
-          "iconPath": "/images/console-entrance.png",
-          "selectedIconPath": "/images/console-entrance.png",
+          "iconPath": "/images/class.png",
+          "selectedIconPath": "/images/class_act.png",
           "selectedColor": "#4665f9",
           "clas": "menu-item",
           active: false
@@ -170,8 +154,8 @@ App({
         {
           "pagePath": "/pages/teacherHome/teacherHome",
           "text": "首页",
-          "iconPath": "/images/console-entrance.png",
-          "selectedIconPath": "/images/console-entrance.png",
+          "iconPath": "/images/info.png",
+          "selectedIconPath": "/images/info_act.png",
           "clas": "menu-item2",
           "selectedColor": "#4665f9",
           active: true
@@ -179,8 +163,8 @@ App({
         {
           "pagePath": "/pages/teacherHome/teacherTimetable/teacherTimetable",
           "text": "课程",
-          "iconPath": "/images/console-entrance.png",
-          "selectedIconPath": "/images/console-entrance.png",
+          "iconPath": "/images/timetable.png",
+          "selectedIconPath": "/images/timetable_act.png",
           "selectedColor": "#4665f9",
           "clas": "menu-item2",
           active: false
@@ -188,8 +172,8 @@ App({
         {
           "pagePath": "/pages/teacherHome/teacherClass/teacherClass",
           "text": "班级",
-          "iconPath": "/images/console-entrance.png",
-          "selectedIconPath": "/images/console-entrance.png",
+          "iconPath": "/images/class.png",
+          "selectedIconPath": "/images/class_act.png",
           "selectedColor": "#4665f9",
           "clas": "menu-item2",
           active: false

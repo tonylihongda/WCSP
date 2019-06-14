@@ -11,7 +11,6 @@ Page({
     db.collection('Section_Student').where({
       student_id: app.globalData.idInfo._id
     }).get().then(res=>{
-        console.log(res.data.length)
         for (var i = 0; i < res.data.length;i++){
           if(res.data[i].grade!= null){
             scoresheet.push(res.data[i])          
@@ -20,7 +19,6 @@ Page({
         this.setData({
           'scoresheet': scoresheet
         })
-        console.log(this.data.scoresheet)
       })
   },
 

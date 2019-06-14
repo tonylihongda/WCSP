@@ -1,12 +1,6 @@
 <view class="container">
   <text>欢迎光临,{{userName}}</text>
-  <image
-      class="image1"
-      mode="aspectFit"
-      src="{{imagePath}}"
-  ></image>
-  <button bindtap="changeImage">更换头像</button>
-  <button bindtap="infoManage">查看个人信息</button>
+  <button class="homebutton" style="width: 750rpx; opacity:{{0.8}}" bindtap="infoManage">查看个人信息</button>
 </view>
 <import src="/pages/template/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>

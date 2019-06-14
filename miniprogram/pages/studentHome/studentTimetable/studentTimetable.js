@@ -123,29 +123,84 @@ Page({
   },
 
   onShow: function () {
-    wx.cloud.callFunction({
-      name: 'loadsection',
-      data: {
-        _id: app.globalData.idInfo._id
-      },
-      success: res => {
-        console.log(res.result)
-        this.setData({
-          'week_kecheng': res.result.week_kecheng
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [loadsection] 调用失败', err)
-        wx.navigateTo({
-          url: '/pages/deployFunctions/deployFunctions',
-        })
+    var that =this
+    var week_kecheng = []
+    db.collection('Section_Student').where({
+      student_id: app.globalData.idInfo._id
+    }).get({
+      success(res) {
+        for (let m = 0; m < res.data.length; m++) {
+          db.collection('Sections').doc(res.data[m].section_id).get({
+            success(res){
+              console.log(res)
+              for (let nn = 0; nn < res.data.time_slot.length; nn++) {//
+                var yiduan_list = []
+                var nulltemp = { sw_kc: [], xw_kc: [], ws_kc: [] }
+                for (let x = 0; x < res.data.time_slot[nn].startweek; x++) {
+                  yiduan_list.push(nulltemp)
+                }
+                for (var n = res.data.time_slot[nn].startweek; n <= res.data.time_slot[nn].endweek; n++) {
+
+                  var yizhou_list = { sw_kc: [], xw_kc: [], ws_kc: [] }
+                  for (let o = 0; o < res.data.time_slot[nn].time.length; o++) {  //周目     
+
+                    if (res.data.time_slot[nn].time[o].num == 0 || res.data.time_slot[nn].time[o].num == 1) {
+
+                      var temp = {
+                        "xqj": res.data.time_slot[nn].time[o].weekday,
+                        "skjc": res.data.time_slot[nn].time[o].num,
+                        "skcd": 1,
+                        "kcmc": res.data.cName,
+                        "bg": 'shangwuke',
+                        "pos": res.data.position,
+                      }
+
+                      yizhou_list.sw_kc.push(temp)
+                    }
+                    else if (res.data.time_slot[nn].time[o].num == 2 || res.data.time_slot[nn].time[o].num == 3) {
+
+                      var temp = {
+                        "xqj": res.data.time_slot[nn].time[o].weekday,
+                        "skjc": res.data.time_slot[nn].time[o].num - 2,
+                        "skcd": 1,
+                        "kcmc": res.data.cName,
+                        "bg": 'xiawuke',
+                        "pos": res.data.position,
+                      }
+   
+                      yizhou_list.xw_kc.push(temp)
+                    }
+                    else {
+  
+                      var temp = {
+                        "xqj": res.data.time_slot[nn].time[o].weekday,
+                        "skjc": res.data.time_slot[nn].time[o].num - 4,
+                        "skcd": 1,
+                        "kcmc": res.data.cName,
+                        "bg": 'wanke',
+                        "pos": res.data.position,
+                      }
+
+                      yizhou_list.ws_kc.push(temp)
+                    }
+                  }
+                  yiduan_list.push(yizhou_list)
+                }
+                week_kecheng.push(yiduan_list)
+                that.setData({
+                  'week_kecheng': week_kecheng
+                })
+                console.log(week_kecheng)
+              }
+            }
+          })
+        }
       }
     })
   },
 
 
   bindPickerChange: function(e){
-    console.log('picker下拉项发生变化后，下标为：', e.detail.value)
     this.setData({
       weekNum: e.detail.value,
     })
@@ -160,10 +215,8 @@ Page({
     var that = this
     var touchMove = e.touches[0].pageX
     var weekNum = that.data.weekNum
-    console.log("touchMove:" + touchMove + " touchDot:" + touchDot + " diff:" + (touchMove - touchDot));
-    // 向左滑动   
     if (tmpFlag) {
-      if (touchMove < touchDot - 200) {
+      if (touchMove < touchDot - 150) {
         nth++
         if (weekNum == 18) {
           weekNum = 0
@@ -176,7 +229,7 @@ Page({
         tmpFlag = false;
       }
       // 向右滑动
-      if (touchMove > touchDot + 200) {
+      if (touchMove > touchDot + 150) {
         nth++
         if (weekNum == 0) {
           weekNum = 18
@@ -194,7 +247,6 @@ Page({
     }
   },
   touchEnd: function (e) {
-    console.log("fdsg")
     clearInterval(interval); // 清除setInterval
     time = 0;
     tmpFlag = true;

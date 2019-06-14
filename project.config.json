@@ -11,8 +11,10 @@
 		"autoAudits": false
 	},
 	"appid": "wxb89e2254f5621b4e",
-	"projectname": "%E6%95%99%E5%AD%A6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F",
-	"libVersion": "2.2.5",
+	"projectname": "miniprogram-test-2",
+	"libVersion": "2.6.6",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

@@ -1,21 +1,33 @@
 <view class="container">
   <text>我的班级</text>
-  <button wx:if="{{type == 0}}" wx:for="{{classInfolist}}" wx:key="_id" bindtap="opentheclass" id="{{item._id}}">{{item.cName}} 课序号：{{item.cNum}}</button>
-
-
-  <checkbox-group bindchange="selectdelClass" wx:if="{{type ==1}}">
-    <label class="radio" wx:for="{{classInfolist}}" wx:key="_id">
-      <checkbox value="{{item._id}}"/>
-        <value>{{item.cName}} 课序号：{{item.cNum}}</value>
-        <text>\n</text>
-    </label>
+  <view class="list">
+  <button wx:if="{{type == 0}}" style="width: 750rpx;" wx:for="{{classInfolist}}" wx:key="_id" bindtap="opentheclass" id="{{item._id}}">{{item.cName}} 课序号：{{item.cNum}}</button>
+</view>
+<view class="table" style="width:100%" wx:if="{{type ==1}}">
+  <view class="tr bg-w">
+    <view class="th">课程名</view>
+    <view class="th">课序号</view>
+  </view>
+  <checkbox-group bindchange="selectdelClass">
+  <block wx:for="{{classInfolist}}" wx:key="_id">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+     <checkbox value="{{item._id}}"/>
+      <view class="td">{{item.cName}}</view>
+      <view class="td">{{item.cNum}}</view>
+    </view>
+    <view class="tr" wx:else>
+     <checkbox value="{{item._id}}"/>
+      <view class="td">{{item.cName}}</view>
+      <view class="td">{{item.cNum}}</view>
+    </view>
+  </block>
   </checkbox-group>
-
+  </view>
 
 </view>
-<button bindtap="addclass">新建班级</button>
-<button bindtap="deleteclass" wx:if="{{type == 0}}">删除班级</button>
-<button bindtap="deletesure" wx:if="{{type ==1}}">确认删除</button>
-<button bindtap="deletecancel" wx:if="{{type ==1}}">取消删除</button>
+<button bindtap="addclass" style="margin-left:0rpx;position:fixed; top:70rpx;width: 375rpx;align-items:center;justify-content: center;" type="primary" wx:if="{{type == 0}}">新建班级</button>
+<button bindtap="deleteclass" type="warn" style="margin-left:375rpx;position:fixed; top:70rpx;width: 375rpx;align-items:center;justify-content: center;" wx:if="{{type == 0}}">删除班级</button>
+<button bindtap="deletesure" type="warn" style="margin-left:375rpx;position:fixed; top:70rpx;width: 375rpx;align-items:center;justify-content: center;" wx:if="{{type ==1}}">确认删除</button>
+<button bindtap="deletecancel" type="primary" style="margin-left:0rpx;position:fixed; top:70rpx;width: 375rpx;align-items:center;justify-content: center;" wx:if="{{type ==1}}">取消删除</button>
 <import src="/pages/template/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>

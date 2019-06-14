@@ -1,7 +1,9 @@
 <view class="container">
   <text>我的班级</text>
-  <button wx:for="{{classInfolist}}" wx:key="_id" bindtap="opentheclass" id="{{item._id}}">{{item.cName}} {{item.tName}} 课序号：{{item.cNum}}</button>
+  <view class="list">
+  <button wx:for="{{classInfolist}}" style="width: 750rpx;" wx:key="_id" bindtap="opentheclass" id="{{item._id}}">{{item.cName}} {{item.tName}} 课序号：{{item.cNum}}</button>
+  </view>
 </view>
-<button bindtap="joinclass">加入班级</button>
+<button class="bottombutton" style="position:fixed; top:70rpx;align-items:center;justify-content: center;background:#6495ED; color:white;width: 100%;" bindtap="joinclass">加入班级</button>
 <import src="/pages/template/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>

@@ -1,8 +1,8 @@
 <view class="container">
 <text>{{class_name}}</text>
-<button bindtap="video_home">上传视频</button>
-<button bindtap="audio_home">音频上传</button>
-<button bindtap="notice_home">通知管理</button>
-<button bindtap="file_home">教学文件</button>
-<button bindtap="studentList">学生管理</button>
+<button bindtap="video_home" style="background:#6495ED; color:white;align-items:center;justify-content: center; width: 100%;">在线视频</button>
+<button bindtap="audio_home" style="background:#6495ED; color:white;align-items:center;justify-content: center; width: 100%;">音频文件</button>
+<button bindtap="notice_home" style="background:#6495ED; color:white;align-items:center;justify-content: center; width: 100%;">查看通知</button>
+<button bindtap="file_home" style="background:#6495ED; color:white;align-items:center;justify-content: center; width: 100%;">查看文件</button>
+<button bindtap="studentList" style="background:#6495ED; color:white;align-items:center;justify-content: center; width: 100%;">学生管理</button>
 </view>

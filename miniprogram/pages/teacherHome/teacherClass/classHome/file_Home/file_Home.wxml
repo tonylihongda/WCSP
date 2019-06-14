@@ -1,0 +1,82 @@
+<view scroll-y="true">
+  <view class="content">
+    <view class="search-bar">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input placeholder="输入关键字查询" bindchange="inputChange" value="{{inputValue}}"/>
+      <button type="primary" wx:if="{{ifselect==0}}" bindtap="queryFiles">查询</button>
+      <button type="primary" wx:if="{{ifselect==1}}" bindtap="showAllFiles">全部</button>
+    </view>
+    <view class="header-bg">
+    </view>
+  </view>
+  <view class="list">
+
+    <view class="table" wx:if="{{type == 0}}">
+      <view class="tr bg-w">
+        <view class="th">通知</view>
+        <view class="th">类型</view>
+        <view class="th">添加时间</view>
+      </view>
+      <view wx:for="{{fileList}}" wx:key="_id" id="{{item._id}}" bindtap="openthefile">
+        <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+          <view class="td">{{item.title}}</view>
+            <view class="td">            
+              <text wx:if="{{item.type==2}}"> 视频 </text> 
+              <text wx:if="{{item.type==1}}"> 图片 </text> 
+              <text wx:if="{{item.type==3}}"> 文件 </text>
+            </view>
+          <view class="td">{{item.add_date}}</view>
+        </view>
+        <view class="tr" wx:else>
+          <view class="td">{{item.title}}</view>
+            <view class="td">            
+              <text wx:if="{{item.type==2}}"> 视频 </text> 
+              <text wx:if="{{item.type==1}}"> 图片 </text> 
+              <text wx:if="{{item.type==3}}"> 文件 </text>
+            </view>
+          <view class="td">{{item.add_date}}</view>
+        </view>
+      </view>
+      </view>
+    </view>
+
+
+
+
+    <view class="table" wx:if="{{type == 1}}">
+      <view class="tr bg-w">
+        <view class="th">通知</view>
+        <view class="th">类型</view>
+        <view class="th">添加时间</view>
+      </view>
+      <checkbox-group bindchange="selectdelFile">
+      <view wx:for="{{fileList}}" wx:key="_id" id="{{item._id}}">
+        <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+        <checkbox value="{{item.fileID}}"></checkbox>  
+          <view class="td">{{item.title}}</view>
+            <view class="td">         
+              <text wx:if="{{item.type==2}}"> 视频 </text> 
+              <text wx:if="{{item.type==1}}"> 图片 </text> 
+              <text wx:if="{{item.type==3}}"> 文件 </text>
+            </view>
+          <view class="td">{{item.add_date}}</view>
+        </view>
+        <view class="tr" wx:else>
+        <checkbox value="{{item.fileID}}"></checkbox>  
+          <view class="td">{{item.title}}</view>
+            <view class="td">          
+              <text wx:if="{{item.type==2}}"> 视频 </text> 
+              <text wx:if="{{item.type==1}}"> 图片 </text> 
+              <text wx:if="{{item.type==3}}"> 文件 </text>
+            </view>
+          <view class="td">{{item.add_date}}</view>
+        </view>
+      </view>
+      </checkbox-group>
+    </view>
+  </view>
+
+<button type="primary" style="margin-left:0rpx;position:fixed; top:100rpx;width: 375rpx;align-items:center;justify-content: center;" type="primary" bindtap="uploadFile" wx:if="{{type == 0}}">上传文件</button>
+<button bindtap="deletefile" style="margin-left:375rpx;position:fixed; top:100rpx;width: 375rpx;align-items:center;justify-content: center;" type="warn" wx:if="{{type == 0}}">删除文件</button>
+<button bindtap="deletesure" style="margin-left:375rpx;position:fixed; top:100rpx;width: 375rpx;align-items:center;justify-content: center;" type="warn" wx:if="{{type ==1}}">确认删除</button>
+<button bindtap="deletecancel" style="margin-left:0rpx;position:fixed; top:100rpx;width: 375rpx;align-items:center;justify-content: center;" type="primary" wx:if="{{type ==1}}">取消删除</button>

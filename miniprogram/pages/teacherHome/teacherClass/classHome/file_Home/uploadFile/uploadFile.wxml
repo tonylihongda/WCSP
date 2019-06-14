@@ -1,0 +1,13 @@
+<text class="page-section-title">上传的文件大小不得超过50MB</text>
+<input style="width:690rpx; background:white; height: 70rpx; position: fixed; margin-left:30rpx; top:100rpx; border: 0px solid; outline: 0px;" placeholder="标题" placeholder-style="color: black" bindinput="bindTextAreaBlur" auto-focus="true"/>
+
+<input style="width:220rpx; background:white; height: 70rpx; position: fixed; margin-left:30rpx; top:200rpx; border: 0px solid; outline: 0px;" placeholder="关键词1" placeholder-style="color: black" bindinput="input_key1" maxlength="10"></input>
+
+<input style="width:220rpx; background:white; height: 70rpx; position: fixed; margin-left:260rpx; top:200rpx; border: 0px solid; outline: 0px;" placeholder="关键词2" placeholder-style="color: black" bindinput="input_key2" maxlength="10"></input>
+
+<input style="width:220rpx; background:white; height: 70rpx; position: fixed; margin-left:490rpx; top:200rpx; border: 0px solid; outline: 0px;" placeholder="关键词3" placeholder-style="color: black" bindinput="input_key3" maxlength="10"></input>
+
+<textarea style="width:690rpx; margin-left:30rpx; background:white; position: fixed; top:300rpx; border: 0px solid; outline: 0px; " placeholder="简介" placeholder-style="color: black" bindinput="bindTextAreaBlur2" />
+
+<button style="background:#6495ED; color:white;align-items:center;justify-content: center; position: fixed;bottom: 90rpx;width: 100%;" bindtap="selectSource" disabled="{{disable}}">选择文件</button>
+<button style="background:#6495ED; color:white;align-items:center;justify-content: center; position: fixed;bottom: 0;width: 100%;" bindtap="uploadFile">确定上传</button>

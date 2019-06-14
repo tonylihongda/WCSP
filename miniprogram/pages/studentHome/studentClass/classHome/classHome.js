@@ -27,22 +27,22 @@ Page({
 
   video_home: function(){
     wx.navigateTo({
-      url: '/pages/studentHome/studentClass/classHome/videoHome'
+      url: '/pages/studentHome/studentClass/classHome/video_Home/video_Home'
     })
   },
   audio_home: function () {
     wx.navigateTo({
-      url: '/pages/studentHome/studentClass/classHome/audio_Home'
+      url: '/pages/studentHome/studentClass/classHome/audio_Home/audio_Home'
     })
   }, 
   notice_home: function () {
     wx.navigateTo({
-      url: '/pages/studentHome/studentClass/classHome/notice_Home'
+      url: '/pages/studentHome/studentClass/classHome/notice_Home/notice_Home'
     })
   }, 
   file_home: function () {
     wx.navigateTo({
-      url: '/pages/studentHome/studentClass/classHome/file_Home'
+      url: '/pages/studentHome/studentClass/classHome/file_Home/file_Home'
     })
   },
   /**

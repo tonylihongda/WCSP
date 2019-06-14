@@ -1,10 +1,30 @@
+<view class="table">
+    <view class="tr bg-g">
+      <view class="td">姓名</view>
+      <view class="td">{{tName}}</view>
+    </view>
+    <view class="tr">
+      <view class="td">职工号</view>
+      <view class="td">{{tIDnum}}</view>
+    </view>
+        <view class="tr bg-g">
+      <view class="td">性别</view>
+      <view class="td">{{tSex}}</view>
+    </view>
+    <view class="tr">
+      <view class="td">职称</view>
+      <view class="td">{{tTitle}}</view>
+    </view>
+        <view class="tr bg-g">
+      <view class="td">学院</view>
+      <view class="td">{{school}}</view>
+    </view>
+    <view class="tr">
+      <view class="td">年龄</view>
+      <view class="td">{{tAge}}</view>
+    </view>
+</view>
 <view class="container">
-  <text>姓名：{{tName}}</text>
-  <text>学号：{{tIDnum}}</text>
-  <text>性别：{{tSex}}</text>
-  <text>职称：{{tTitle}}</text>
-  <text>学院：{{school}}</text>
-  <text>年龄：{{tAge}}</text>
-  <button bindtap="logoff">解除绑定</button>
-  <button bindtap="changekey">修改密码</button>
+  <button style="width:30%; background:#6495ED; color:white; height: 90rpx; align-items:center;justify-content: center" bindtap="changekey">修改密码</button>
+  <button style="width:30%; background:red; color:white; height: 90rpx; align-items:center;justify-content: center" bindtap="logoff">解除绑定</button>
 </view>

@@ -1,0 +1,6 @@
+<view class="container">
+<text>{{notice_title}}</text>
+<text>{{notice_data}}</text>
+</view>
+<view>\n\n</view>
+<view style="margin-left:30rpx; width:690rpx;">{{notice_context}}</view>

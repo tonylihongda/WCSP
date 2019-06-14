@@ -1,8 +1,25 @@
-<text>班级列表</text>
-<radio-group bindchange="selectClass">
-  <label class="radio" wx:for="{{items}}" wx:key="_id">
-    <checkbox value="{{item._id}}"/>
-    {{item.cName}} 课序号：{{item.cNum}} {{item.tName}}
-  </label>
-</radio-group>
-<button bindtap="jointheclass">加入</button>
+<view class="container">
+  <text>班级列表</text>
+</view>
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">课程</view>
+    <view class="th">课序号</view>
+  </view>
+  <checkbox-group bindchange="selectClass">
+  <block wx:for="{{items}}" wx:key="_id">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+    <checkbox value="{{item._id}}"></checkbox>
+      <view class="td">{{item.cName}}</view>
+      <view class="td">{{item.cNum}}</view>
+    </view>
+    <view class="tr" wx:else>
+    <checkbox value="{{item._id}}"></checkbox>
+      <view class="td">{{item.cName}}</view>
+      <view class="td">{{item.cNum}}</view>
+    </view>
+  </block>
+  </checkbox-group>
+  </view>
+  <button wx:if="{{type==1}}" style="background:#6495ED; color:white;align-items:center;justify-content: center; position: fixed;bottom: 0;width: 100%;" bindtap="jointheclass">加入</button>
+  <text wx:if="{{type==0}}">暂无可加入的班级</text>

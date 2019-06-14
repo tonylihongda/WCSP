@@ -128,7 +128,7 @@ Page({
         _id: app.globalData.idInfo._id
       },
       success: res => {
-        console.log(res.result)
+
         this.setData({
           'week_kecheng': res.result.week_kecheng
         })
@@ -142,7 +142,7 @@ Page({
     })
   },
   bindPickerChange: function (e) {
-    console.log('picker下拉项发生变化后，下标为：', e.detail.value)
+
     this.setData({
       weekNum: e.detail.value,
     })
@@ -157,10 +157,10 @@ Page({
     var that = this
     var touchMove = e.touches[0].pageX
     var weekNum = that.data.weekNum
-    console.log("touchMove:" + touchMove + " touchDot:" + touchDot + " diff:" + (touchMove - touchDot));
+    
     // 向左滑动   
     if (tmpFlag){
-      if (touchMove < touchDot - 200) {
+      if (touchMove < touchDot - 150) {
         nth++
         if (weekNum == 18){
           weekNum = 0
@@ -173,7 +173,7 @@ Page({
         tmpFlag = false;
       }
       // 向右滑动
-      if (touchMove > touchDot + 200) {
+      if (touchMove > touchDot + 150) {
         nth++
         if (weekNum == 0) {
           weekNum = 18
@@ -191,7 +191,7 @@ Page({
     }
   },
   touchEnd: function (e) {
-    console.log("fdsg")
+
     clearInterval(interval); // 清除setInterval
     time = 0;
     tmpFlag = true;

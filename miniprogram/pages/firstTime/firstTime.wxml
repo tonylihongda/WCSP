@@ -1,12 +1,5 @@
-<view class="container">
 
-  <!-- 登录 -->
-  <view class="login">
-    <text>学号</text>
-    <input class="input" bindinput="printnum" type="number" maxlength="9" confirm-type="next"/>
-    <text>密码</text>
-    <input class="input" bindinput="printkey" password="true" maxlength="20" confirm-type="send"/>
-    <button bindtap="studentlogin">学生登录</button>
-    <button bindtap="teacherlogin">教师登录</button>
-  </view>
-</view>
+    <input class="input" bindinput="printnum" auto-focus="true" type="number" maxlength="9" confirm-type="next" style="width:500rpx; background:white; height: 70rpx; position: fixed; top:400rpx; margin-left:125rpx;  border: 0px solid; outline: 0px; opacity:{{0.9}};"placeholder="学号/职工号" placeholder-style="color: black"/>
+    <input class="input" bindinput="printkey" password="true" maxlength="20" confirm-type="send" style="width:500rpx; background:white; height: 70rpx; position:fixed; top:500rpx;align-items:center; margin-left:125rpx;justify-content: center; border: 0px solid; outline: 0px; opacity:{{0.9}}" placeholder="密码" placeholder-style="color: black"/>
+    <button bindtap="studentlogin" style="width:30%; background:#6495ED; color:white; margin-left:125rpx; height: 90rpx; position:fixed; top:600rpx;align-items:center;justify-content: center">学生登录</button>
+    <button bindtap="teacherlogin" style="width:30%; background:#6495ED; color:white; height: 90rpx; margin-left:390rpx; position:fixed; top:600rpx;align-items:center;justify-content: center">教师登录</button>

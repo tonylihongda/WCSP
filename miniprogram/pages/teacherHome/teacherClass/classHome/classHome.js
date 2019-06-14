@@ -31,22 +31,22 @@ Page({
   },
   video_home: function () {
     wx.navigateTo({
-      url: '/pages/teacherHome/teacherClass/classHome/videoHome'
+      url: '/pages/teacherHome/teacherClass/classHome/video_Home/video_Home'
     })
   },
   audio_home: function () {
     wx.navigateTo({
-      url: '/pages/teacherHome/teacherClass/classHome/audio_Home'
+      url: '/pages/teacherHome/teacherClass/classHome/audio_Home/audio_Home'
     })
   },
   notice_home: function () {
     wx.navigateTo({
-      url: '/pages/teacherHome/teacherClass/classHome/notice_Home'
+      url: '/pages/teacherHome/teacherClass/classHome/notice_Home/notice_Home'
     })
   },
   file_home: function () {
     wx.navigateTo({
-      url: '/pages/teacherHome/teacherClass/classHome/file_Home'
+      url: '/pages/teacherHome/teacherClass/classHome/file_Home/file_Home'
     })
   },
   /**

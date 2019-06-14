@@ -1,3 +1,17 @@
-<view class="container">
-<text wx:for="{{scoresheet}}" wx:key="_id">{{item.cName}}:{{item.grade}}</text>
-</view>
+
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">课程</view>
+    <view class="th">成绩</view>
+  </view>
+  <block wx:for="{{scoresheet}}" wx:key="_id">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.cName}}</view>
+      <view class="td">{{item.grade}}</view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">{{item.cName}}</view>
+      <view class="td">{{item.grade}}</view>
+    </view>
+  </block>
+  </view>

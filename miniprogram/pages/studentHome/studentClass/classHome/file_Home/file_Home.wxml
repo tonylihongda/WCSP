@@ -1,0 +1,42 @@
+<view scroll-y="true">
+<view class="content">
+  <view class="search-bar">
+    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+    <input placeholder="输入关键字查询" bindchange="inputChange" value="{{inputValue}}"/>
+    <button style="align-items:center;justify-content: center; background:#6495ED; color:white; " bindtap="queryFiles">查询</button>
+  </view>
+  <view class="header-bg"></view>
+  </view>
+  <view class="book-content" style="margin-top: 230rpx;">
+
+  <view class="table">
+      <view class="tr bg-w">
+        <view class="th">通知</view>
+        <view class="th">类型</view>
+        <view class="th">添加时间</view>
+      </view>
+      <view wx:for="{{fileList}}" wx:key="_id" id="{{item._id}}" bindtap="openthefile">
+        <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+          <view class="td">{{item.title}}</view>
+            <view class="td">            
+              <text wx:if="{{item.type==2}}"> 视频 </text> 
+              <text wx:if="{{item.type==1}}"> 图片 </text> 
+              <text wx:if="{{item.type==3}}"> 文件 </text>
+            </view>
+          <view class="td">{{item.add_date}}</view>
+        </view>
+        <view class="tr" wx:else>
+          <view class="td">{{item.title}}</view>
+            <view class="td">            
+              <text wx:if="{{item.type==2}}"> (视频) </text> 
+              <text wx:if="{{item.type==1}}"> (图片) </text> 
+              <text wx:if="{{item.type==3}}"> (文件) </text>
+            </view>
+          <view class="td">{{item.add_date}}</view>
+        </view>
+      </view>
+      </view>
+  </view>
+
+</view>
+<button bindtap="showAllFiles" style="height: 90rpx; position:fixed; top:100rpx;align-items:center;justify-content: center; background:#6495ED; color:white; width: 100%;">显示全部</button>
